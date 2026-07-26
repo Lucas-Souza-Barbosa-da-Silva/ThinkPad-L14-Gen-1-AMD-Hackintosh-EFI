@@ -17,11 +17,14 @@ This EFI is designed for the **Lenovo ThinkPad L14 Gen 1 (AMD)** and aims to pro
 * Sleep/Wake
 * USB ports
 * Keyboard and touchpad
+* AirDrop (if used AirportItlwm)
+* USB Tethering
+
 
 ### ⚠️ Not Working
 
 * Fingerprint reader (Goodix)
-* AirDrop
+* AirDrop (if used Itlwm)
 * AirPlay / Screen Mirroring
 
 ---
@@ -43,27 +46,54 @@ This EFI is designed for the **Lenovo ThinkPad L14 Gen 1 (AMD)** and aims to pro
 
 ---
 
+# Notes
+
+This EFI was built specifically for the hardware listed above. While it may work on similar Ryzen-based ThinkPads, compatibility with other hardware is **not guaranteed**.
+
+If you are going to use the internet installation, use a wired internet connection on macOS Tahoe and Sequoia.
+
+This is because Wi-Fi activation happens after the installation, **post install**.
+
+If you intend to use this EFI on another machine, make sure to:
+
+* Generate your own SMBIOS.
+* Adjust the ACPI tables if necessary.
+* Create your own USB mapping.
+* Update the kexts and OpenCore to the latest stable versions whenever possible.
+
+Use this project as a reference and customize it for your own hardware.
+
+---
+
 # macOS Compatibility
 
 ### macOS Tahoe
 
-⚠️ **Not recommended**
+✅ **Supported (using the "EFI macOS Tahoe" folder)**
 
-Current status:
+Use the dedicated EFI included in this repository and patch
 
-* Wi-Fi does not work.
-* Audio does not work.
-* Overall system stability is poor.
+Use RP Core patch: https://github.com/luchina-gabriel/RP-CORE
 
-This EFI is **not recommended** for Tahoe.
+Current status without patch:
+
+* Wi-Fi does not work without patch.
+* Audio does not work without patch.
+* Overall system stability is poor, if using **HeliPort**.
+
+Current status with patch:
+
+* Overall system works similarly to Sonoma.
 
 ---
 
 ### macOS Sequoia
 
-Supported with one small modification.
+✅ **Supported**
 
-Replace **AirportItlwm** with **itlwm** and use **HeliPort** to manage Wi-Fi connections.
+Use the standard EFI.
+
+Replace AirportItlwm with the appropriate version of itlwm and use HeliPort for Wi-Fi management.
 
 After this change, the system works similarly to Sonoma.
 
@@ -71,7 +101,7 @@ After this change, the system works similarly to Sonoma.
 
 ### macOS Sonoma
 
-✅ Fully supported.
+✅ **Fully supported**.
 
 No modifications are required. Everything listed in the **Working** section functions as expected.
 
@@ -79,7 +109,7 @@ No modifications are required. Everything listed in the **Working** section func
 
 ### macOS Catalina → Ventura
 
-Supported.
+✅ **Supported**.
 
 Simply replace **AirportItlwm** with the version that matches your target macOS release.
 
@@ -89,7 +119,15 @@ After replacing the kext, the system behaves the same as Sonoma.
 
 ### Older macOS Versions
 
-❌ Not supported.
+❌ **Not supported**.
+
+---
+
+###[!IMPORTANT]
+
+**The EFI macOS Tahoe folder is intended exclusively for macOS Tahoe**
+
+For all earlier macOS versions, use the standard EFI folder.
 
 ---
 
@@ -109,18 +147,6 @@ Special thanks to:
 * **Apple** – macOS
 * **Dortania** – The excellent OpenCore Install Guide
 * **Collin8000** – Base EFI 
+* **luchina-gabriel** – RP Core
 
 ---
-
-# Notes
-
-This EFI was built specifically for the hardware listed above. While it may work on similar Ryzen-based ThinkPads, compatibility with other hardware is **not guaranteed**.
-
-If you intend to use this EFI on another machine, make sure to:
-
-* Generate your own SMBIOS.
-* Adjust the ACPI tables if necessary.
-* Create your own USB mapping.
-* Update the kexts and OpenCore to the latest stable versions whenever possible.
-
-Use this project as a reference and customize it for your own hardware.
