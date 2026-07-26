@@ -123,7 +123,7 @@ After replacing the kext, the system behaves the same as Sonoma.
 
 ---
 
-###[!IMPORTANT]
+### IMPORTANT
 
 **The EFI macOS Tahoe folder is intended exclusively for macOS Tahoe**
 
