@@ -147,6 +147,5 @@ Special thanks to:
 * **Apple** – macOS
 * **Dortania** – The excellent OpenCore Install Guide
 * **Collin8000** – Base EFI 
-* **luchina-gabriel** – RP Core
 
 ---
